@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Le Rest ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- background -->
+<img src="maya.jpg" class="bg-img">
+
+<!-- ⚠️ نفس audio باش الموسيقى تكمل (ما تعاودش) -->
+<audio id="bg-music" loop>
+  <source src="love.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const music = document.getElementById("bg-music");
+music.volume = 0.25;
+
+// يكمل الموسيقى فقط
+if(localStorage.getItem('musicStarted')){
+  music.play().catch(()=>{});
+}
+</script>
+
+<!-- back button -->
+<a href="index.html" class="back-btn">
+  <i class="fa-solid fa-arrow-left"></i> Retour
+</a>
+
+<!-- memory card -->
+<div class="memory">
+
+  <h1>✨ Le reste de notre histoire ❤️</h1>
+
+  <p>
+    W heka tabda hkeyetna lha9i9iya...  
+    kol nhar nzid n7ebbek akther 💕  
+    kol dhahka m3ak teswa dunia kemla  
+    w kol lahtha m3ak heya souvenir jdida.
+  </p>
+
+  <p>
+    Ma3adch fama dates bark...  
+    el ba9i kolou → ❤️ Forever together  
+  </p>
+
+  <h2 id="forever" class="love">
+    ♾️ To be continued... Maya & Malek ♾️
+  </h2>
+
+</div>
+
+<script>
+setTimeout(()=>{
+  document.getElementById("forever").classList.add("show");
+},3000);
+</script>
+
+</body>
+</html>

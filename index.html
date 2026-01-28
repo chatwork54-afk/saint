@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Maya ❤️ Notre Histoire</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<!-- background image -->
+<img src="maya.jpg" class="bg-img">
+
+<!-- autoplay music -->
+<audio id="bg-music" loop>
+  <source src="love.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const music = document.getElementById("bg-music");
+
+// check if music was already started
+if(!localStorage.getItem('musicStarted')){
+  music.play().catch(e=>{
+    // لو autoplay blocked على mobile
+    document.body.addEventListener('click',()=>music.play());
+  });
+  localStorage.setItem('musicStarted','true'); // mark started
+} else {
+  music.play(); // إذا كان مسجل start مسبقاً، يلعب مباشرة
+}
+music.volume = 0.25;
+</script>
+
+
+<!-- HERO -->
+<div class="hero">
+  <h1>💖 happy valentine's day <br> Maya d'amour💖</h1>
+  <p id="days"></p>
+</div>
+
+<!-- TIMELINE -->
+<div class="timeline">
+  <a href="2024-07-19.html" class="event">
+    <i class="fa-solid fa-comment-dots"></i>
+    <div>
+      <strong>19/07/2024</strong><br>
+      Haja omerha matetnsee 
+    </div>
+  </a>
+
+  <a href="20-07-2024.html" class="event">
+    <i class="fa-solid fa-heart"></i>
+    <div>
+      <strong>20/07/2024</strong><br>
+      أول نحبك
+    </div>
+  </a>
+
+  <a href="2025-03-14.html" class="event">
+    <i class="fa-solid fa-moon"></i>
+    <div>
+      <strong>14/03/2025</strong><br>
+      أول خرجة
+    </div>
+  </a>
+
+  <a href="le-rest.html" class="event">
+    <i class="fa-solid fa-star"></i>
+    <div>
+      <strong>Le rest</strong><br>
+      Happiest day
+    </div>
+  </a>
+
+  <a href="2024-11-15.html" class="event">
+    <i class="fa-solid fa-gift"></i>
+    <div>
+      <strong>15/11/2024</strong><br>
+      Souvenir spécial
+    </div>
+  </a>
+</div>
+
+<!-- BUTTON -->
+<div class="add-memory">
+  <button onclick="alert('Souvenir prochainement 💌')">
+    <i class="fa-solid fa-plus"></i> Ajouter un souvenir
+  </button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
