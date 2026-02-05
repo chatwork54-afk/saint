@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>Maya ❤️ Notre Histoire</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>Maya ❤️ Notre Histoire</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <!-- font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="style.css">
+  <!-- icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-<!-- 🔒 LOCK SCREEN -->
+  <!-- 🔒 LOCK SCREEN -->
 <div id="lock" class="lock">
   <h2>🔐 Site privé</h2>
   <p>Entre le code secret 💖</p>
@@ -22,24 +25,43 @@
   <p id="error"></p>
 </div>
 
-<!-- 🌸 SITE CONTENT -->
-<div id="site" style="display:none">
-
+<!-- background image -->
 <img src="maya.jpg" class="bg-img">
 
+<!-- autoplay music -->
 <audio id="bg-music" loop>
   <source src="love.mp3" type="audio/mpeg">
 </audio>
 
-<div class="hero">
-  <h1>💖 Happy Valentine's Day<br>Maya d'amour 💖</h1>
-</div>
+<script>
+const music = document.getElementById("bg-music");
 
+// check if music was already started
+if(!localStorage.getItem('musicStarted')){
+  music.play().catch(e=>{
+    // لو autoplay blocked على mobile
+    document.body.addEventListener('click',()=>music.play());
+  });
+  localStorage.setItem('musicStarted','true'); // mark started
+} else {
+  music.play(); // إذا كان مسجل start مسبقاً، يلعب مباشرة
+}
+music.volume = 0.25;
+</script>
+
+
+<!-- HERO -->
+<div class="hero">
+  <h1>💖 Happy valentine's day <br> Maya d'amour💖</h1>
+  <p id="days"></p>
+</div>
+<!-- TIMELINE -->
 <div class="timeline">
   <a href="2024-07-19.html" class="event">
     <i class="fa-solid fa-comment-dots"></i>
     <div>
-      <strong>19/07/2024</strong>
+      <strong>19/07/2024</strong><br>
+      
     </div>
   </a>
 
@@ -76,37 +98,34 @@
   </a>
 </div>
 
+<!-- BUTTON -->
+<div class="add-memory">
+  <button onclick="alert('Souvenir prochainement 💌')">
+    <i class="fa-solid fa-plus"></i> Ajouter un souvenir
+  </button>
 </div>
 
+<script src="script.js"></script>
 <script>
-const SECRET = "200724"; // 🔑 الكود اللي باش تحمي الموقع
-const lock = document.getElementById("lock");
-const site = document.getElementById("site");
-const music = document.getElementById("bg-music");
-const error = document.getElementById("error");
-
-// déjà débloqué ?
-if(localStorage.getItem("unlocked") === "yes"){
-  lock.style.display="none";
-  site.style.display="block";
-  music.volume = 0.25;
-  music.play();
-}
-
-// unlock function
-function unlock(){
-  const code = document.getElementById("code").value;
-  if(code === SECRET){
-    localStorage.setItem("unlocked","yes");
-    lock.style.display="none";
-    site.style.display="block";
-    music.volume = 0.25;
-    music.play();
-  }else{
-    error.textContent = "❌ Code incorrect";
+  const SECRET = "200724"; // 🔑 بدّل الكود كيما تحب
+  const lock = document.getElementById("lock");
+  const error = document.getElementById("error");
+  
+  // إذا تحلّ قبل
+  if(localStorage.getItem("unlocked") === "yes"){
+    lock.style.display = "none";
   }
-}
-</script>
-
+  
+  function unlock(){
+    const code = document.getElementById("code").value;
+    if(code === SECRET){
+      localStorage.setItem("unlocked","yes");
+      lock.style.display = "none";
+    }else{
+      error.textContent = "❌ Code incorrect";
+    }
+  }
+  </script>
+  
 </body>
 </html>

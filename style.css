@@ -361,104 +361,10 @@ body::before{
   from{opacity:0; transform:scale(0.8);}
   to{opacity:1; transform:scale(1);}
 }
-body{
-  font-family:'Poppins',sans-serif;
-  margin:0;
-  text-align:center;
-  color:white;
-  overflow-x:hidden;
-}
-
-/* BACKGROUND */
-.bg-img{
-  position:fixed;
-  top:0; left:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  z-index:-2;
-}
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.45);
-  backdrop-filter:blur(3px);
-  z-index:-1;
-}
-
-/* HERO */
-.hero{
-  margin:40px 20px;
-  padding:40px;
-  background:rgba(255,255,255,0.15);
-  backdrop-filter:blur(15px);
-  border-radius:25px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.4);
-}
-
-.hero h1{
-  font-size:36px;
-  margin-bottom:10px;
-  color:#ffb6d9;
-}
-
-/* TIMELINE */
-.timeline{
-  display:flex;
-  flex-direction:column;
-  gap:22px;
-  max-width:600px;
-  margin:auto;
-  padding:20px;
-}
-
-.event{
-  background:rgba(255,255,255,0.15);
-  backdrop-filter:blur(12px);
-  padding:20px;
-  border-radius:18px;
-  display:flex;
-  align-items:center;
-  gap:15px;
-  text-decoration:none;
-  color:white;
-  transition:0.3s;
-  box-shadow:0 8px 20px rgba(0,0,0,0.25);
-}
-
-.event i{
-  font-size:22px;
-  color:#ff9ecb;
-}
-
-.event:hover{
-  transform:translateY(-5px) scale(1.02);
-  background:rgba(255,255,255,0.25);
-}
-
-.add-memory button{
-  margin:40px;
-  padding:14px 28px;
-  border:none;
-  border-radius:30px;
-  background:linear-gradient(45deg,#ff6fa5,#ff9ecb);
-  color:white;
-  font-weight:bold;
-  cursor:pointer;
-  transition:0.3s;
-  box-shadow:0 10px 25px rgba(255,105,160,0.5);
-}
-
-.add-memory button:hover{
-  transform:scale(1.08);
-}
-
-/* MEMORY PAGE LOCK */
 .lock{
   position:fixed;
   inset:0;
-  background:#000;
+  background:rgba(0,0,0,0.9);
   color:white;
   display:flex;
   flex-direction:column;
@@ -469,20 +375,20 @@ body::before{
 }
 
 .lock input{
-  padding:12px;
-  border-radius:20px;
+  padding:12px 20px;
+  border-radius:25px;
   border:none;
   margin-top:15px;
-  text-align:center;
   font-size:18px;
+  text-align:center;
 }
 
 .lock button{
   margin-top:15px;
-  padding:12px 25px;
+  padding:12px 30px;
   border:none;
   border-radius:25px;
-  background:#ff4d6d;
+  background:#ff6fa5;
   color:white;
   font-size:18px;
   cursor:pointer;
@@ -490,38 +396,5 @@ body::before{
 
 .lock #error{
   margin-top:10px;
-  color:#ffb3c1;
-}
-
-/* MEMORY CARDS */
-.memory{
-  max-width:700px;
-  margin:auto;
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(15px);
-  border-radius:25px;
-  padding:30px;
-  animation: fadeZoom 1s ease;
-}
-
-.memory h1{
-  margin-bottom:15px;
-}
-
-.memory p, .memory h2{
-  font-size:18px;
-}
-
-#love{
-  opacity:0;
-  transition:1s;
-}
-
-#love.show{
-  opacity:1;
-}
-
-@keyframes fadeZoom{
-  from{opacity:0; transform:scale(0.8);}
-  to{opacity:1; transform:scale(1);}
+  color:#ff9ecb;
 }
