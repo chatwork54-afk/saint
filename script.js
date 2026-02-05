@@ -32,3 +32,4 @@ function updateLoveTime(){
 setInterval(updateLoveTime, 1000);
 
 updateLoveTime();
+
