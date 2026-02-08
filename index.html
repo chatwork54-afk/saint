@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8" />
   <title>Maya ❤️ Notre Histoire</title>
@@ -14,119 +15,253 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 
+
 <body>
 
   <!-- 🔒 LOCK SCREEN -->
-<div id="lock" class="lock">
-  <h2>🔐 Site privé</h2>
-  <p>Entre le code secret 💖</p>
-  <input type="password" id="code" placeholder="Code secret">
-  <button onclick="unlock()">Ouvrir 💌</button>
-  <p id="error"></p>
-</div>
+  <div id="lock" class="lock">
+    <h2>🔐 Site privé</h2>
+    <p>Entre le code secret 💖</p>
+    <input type="password" id="code" placeholder="Code secret">
+    <button onclick="unlock()">Ouvrir 💌</button>
+    <p id="error"></p>
+  </div>
 
-<!-- background image -->
-<img src="maya.jpg" class="bg-img">
+  <!-- autoplay music (PERSISTENT) -->
+  <audio id="bg-music" loop>
+    <source src="love.mp3" type="audio/mpeg">
+  </audio>
 
-<!-- autoplay music -->
-<audio id="bg-music" loop>
-  <source src="love.mp3" type="audio/mpeg">
-</audio>
+  <script>
+    const music = document.getElementById("bg-music");
 
-<script>
-const music = document.getElementById("bg-music");
-
-// check if music was already started
-if(!localStorage.getItem('musicStarted')){
-  music.play().catch(e=>{
-    // لو autoplay blocked على mobile
-    document.body.addEventListener('click',()=>music.play());
-  });
-  localStorage.setItem('musicStarted','true'); // mark started
-} else {
-  music.play(); // إذا كان مسجل start مسبقاً، يلعب مباشرة
-}
-music.volume = 0.25;
-</script>
-
-
-<!-- HERO -->
-<div class="hero">
-  <h1>💖 Happy valentine's day <br> Maya d'amour💖</h1>
-  <p id="days"></p>
-</div>
-<!-- TIMELINE -->
-<div class="timeline">
-  <a href="2024-07-19.html" class="event">
-    <i class="fa-solid fa-comment-dots"></i>
-    <div>
-      <strong>19/07/2024</strong><br>
-      
-    </div>
-  </a>
-
-  <a href="20-07-2024.html" class="event">
-    <i class="fa-solid fa-heart"></i>
-    <div>
-      <strong>20/07/2024</strong><br>
-      أول ليلة نحكيو فها
-    </div>
-  </a>
-
-  <a href="2025-03-14.html" class="event">
-    <i class="fa-solid fa-moon"></i>
-    <div>
-      <strong>14/03/2025</strong><br>
-      أول نحبك
-    </div>
-  </a>
-
-  <a href="cadeau.html" class="event">
-    <i class="fa-solid fa-gift"></i>
-    <div>
-      <strong>“Juste pour toi ❤️</strong><br>
-    </div>
-  </a>
-
-  <a href="le-rest.html" class="event">
-    <i class="fa-solid fa-star"></i>
-    <div>
-      <strong>En fin nheb n9oulk...</strong><br>
-      
-    </div>
-  </a>
-
-
-</div>
-
-<!-- BUTTON -->
-<div class="add-memory">
-  <button onclick="alert('Souvenir prochainement 💌')">
-    <i class="fa-solid fa-plus"></i> Ajouter un souvenir
-  </button>
-</div>
-
-<script src="script.js"></script>
-<script>
-  const SECRET = "190724"; // 🔑 بدّل الكود كيما تحب
-  const lock = document.getElementById("lock");
-  const error = document.getElementById("error");
-  
-  // إذا تحلّ قبل
-  if(localStorage.getItem("unlocked") === "yes"){
-    lock.style.display = "none";
-  }
-  
-  function unlock(){
-    const code = document.getElementById("code").value;
-    if(code === SECRET){
-      localStorage.setItem("unlocked","yes");
-      lock.style.display = "none";
-    }else{
-      error.textContent = "❌ Code incorrect";
+    // check if music was already started
+    if (!localStorage.getItem('musicStarted')) {
+      music.play().catch(e => {
+        document.body.addEventListener('click', () => music.play());
+      });
+      localStorage.setItem('musicStarted', 'true');
+    } else {
+      music.play();
     }
-  }
+    music.volume = 0.25;
   </script>
-  
+
+  <!-- DYNAMIC CONTENT AREA -->
+  <div id="app-content" class="transition-fade">
+
+    <!-- background image (Changes per page) -->
+    <img src="maya.jpg" class="bg-img">
+
+    <!-- HERO -->
+    <div class="hero">
+      <h1>💖 Happy valentine's day <br> Maya d'amour💖</h1>
+      <p id="days"></p>
+    </div>
+    <!-- TIMELINE -->
+    <div class="timeline">
+      <a href="2024-07-19.html" class="event">
+        <i class="fa-solid fa-comment-dots"></i>
+        <div>
+          <strong>19/07/2024</strong><br>
+
+        </div>
+      </a>
+
+      <a href="20-07-2024.html" class="event">
+        <i class="fa-solid fa-heart"></i>
+        <div>
+          <strong>20/07/2024</strong><br>
+          أول ليلة نحكيو فها
+        </div>
+      </a>
+
+      <a href="2025-03-14.html" class="event">
+        <i class="fa-solid fa-moon"></i>
+        <div>
+          <strong>14/03/2025</strong><br>
+          أول نحبك
+        </div>
+      </a>
+
+      <a href="cadeau.html" class="event">
+        <i class="fa-solid fa-gift"></i>
+        <div>
+          <strong>“Juste pour toi ❤️</strong><br>
+        </div>
+      </a>
+
+      <a href="le-rest.html" class="event">
+        <i class="fa-solid fa-star"></i>
+        <div>
+          <strong>En fin nheb n9oulk...</strong><br>
+
+        </div>
+      </a>
+    </div>
+
+    <!-- BUTTON -->
+    <div class="add-memory">
+      <button onclick="alert('Souvenir prochainement 💌')">
+        <i class="fa-solid fa-plus"></i> Ajouter un souvenir
+      </button>
+    </div>
+
+  </div>
+
+
+  <!-- OFFLINE CONTENT TEMPLATES -->
+  <template id="tmpl-2024-07-19.html">
+    <div id="app-content" class="transition-fade">
+      <img src="photo.jpg" class="bg-img">
+      <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Retour</a>
+      <div class="memory">
+        <h1>💖 19 Juillet 2024 💖</h1>
+        <p class="story">
+          lnharet eli jeni msg men andek baad follow men andi
+          msg hedha omri manenseha...
+          8 mta lil 9aad fi 9ahwa ma louled tjini notification nal9a
+          "maryem mhamdi a repondu a votre story" direct nejri halyto nal9a
+          “aya afrah beya aad ani jeya maakom”
+          ki ryt msg t9oul dra chsar frahet w jawbtek w b9yt nkhamem w netbasem wahdi
+          el haja siba eli manich aref kifh nabdeha w metraded jetni forsteha baad meli kol manrak nab9a nkhamem fik
+          w baad bdet hkeytena w adina lila nahkiw w netarfo ala bedhena sehih narfo bedhanena ama jiren hh 💓
+        </p>
+        <img src="photo.jpg" class="photo">
+        <p id="secret" class="secret">Maya ❤️ enti el farha elli tkhallini nibtasem men ghir sabab..</p>
+      </div>
+      <script>setTimeout(() => { document.getElementById("secret").classList.add("show"); }, 5000);</script>
+    </div>
+  </template>
+
+  <template id="tmpl-20-07-2024.html">
+    <div id="app-content" class="transition-fade">
+      <img src="night2.jpg" class="bg-img">
+      <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Retour</a>
+      <div class="hearts">❤️ 💖 💕 ❤️ 💖</div>
+      <div class="memory">
+        <h1>🌙 20 Juillet 2024</h1>
+        <p class="story">
+          Lila hedhy eli ena 9aad nekteb w manich aref rouhy fech namel ama en meme temps ferhan hahah
+          haja manrfech kifh ama be9i 9oul mariem eli khaliteha akeka w seghar taw walit nahki maha haka
+          hahahah lila mafhmtech kifh tada feha lwa9et men 10 nahkiw hata lel 4 mta sbeh hh
+          baad aad sayee heki eli khaltena nahkiw fi denia w nemchiw lel salle w te7out
+          m3aya kit wenty tasma fil ghneya hedhy eli 9ada temchi taw hhh
+          nhebk barcha y maya 💓
+        </p>
+        <h2 id="love" class="love">نحبك ❤️</h2>
+      </div>
+      <script>setTimeout(() => { document.getElementById("love").classList.add("show"); }, 4000);</script>
+    </div>
+  </template>
+
+  <template id="tmpl-cadeau.html">
+    <div id="app-content" class="transition-fade">
+      <img src="bg.jpg" class="bg-img" alt="Background">
+      <div class="heart-floating" style="left:10%; top:30%;">❤️</div>
+      <div class="heart-floating" style="left:80%; top:50%; animation-delay:1.5s;">💖</div>
+      <div class="heart-floating" style="left:50%; top:10%; animation-delay:3s;">❤️</div>
+      <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Retour</a>
+      <div class="memory">
+        <h1>Pour Maya ❤️</h1>
+        <p>
+          Mongela hedhy ya Maya mahech ken cadeau njibehlk, heya haja habyteha tab9alk.
+          <br><br>
+          Men awel nhar arftek fih, wenty tbadel feya w t3alem feya chnwa ma3neha nehtam, w chnwa ma3neha nheb bel7a9.
+          <br><br>
+          Kol de9i9a tadeha wenty lebsa al mongela, a3ref eli fama 9aleb ferhan ken bik, w yed3ilk belkhyr, w ychouf fik
+          mosta9bel w hkeya yheb ykamaleha.
+          <br><br>
+          Netmana Maya matna7yhch men yedek, w kol mara tchouf feha lwa9et tetfaker eli wa9ty, w 9albi w rouhy dima lik
+          ❤️
+        </p>
+        <img src="montree.jpg" alt="Montre pour Maya">
+        <div class="signature">Avec tout mon amour<div class="love-heart">❤️</div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template id="tmpl-le-rest.html">
+    <div id="app-content" class="transition-fade">
+      <img src="maya.jpg" class="bg-img">
+      <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Retour</a>
+      <div class="memory">
+        <h1>✨ Ekher lhkeya ❤️</h1>
+        <p>
+          Filkher maya nheb n9oulk eli tadineh mouch sehel w tadina
+          bkol chy kol chy w mazelt chtordhna barcha hajet okhra w adytelk
+          hajet omri makont netsawer fama chkun yesta7malhom
+          mouch ala 7ata haja khter nhebk w me2men bhkeytena chtekml fi
+          west hedha kol ena yek mabdhena maya w omrena mankhaliw badhena
+          haja hedhy mahech klem mahech just haja tete7kee hedhy hkeya
+          lezmeha tekml lezmk arfaa alech 9admin wena zeda wena fi weset
+          hedha kol ena omri mankhalik
+          w namel fi kol chy ala khatek nestana fi reponse menek y rouhy w raani nach9ek</Br>
+          </Br>
+          Andi barcha namel fih site hedha kol lila saher nekhdem fih hedha just chnlkhes hkeyetna mabdhena
+          tebet fih wlh hhh wenty kol lila malek fech tbawel fech tamel wena n9oulk formatik or9ed or9ed hedha
+          inshalah tkoun ejbetek w farhtek y azyen tofla w abed arftou fi hyety
+        </p>
+        <p>Ma3adch fama dates bark... el ba9i kolou → ❤️ Forever together</p>
+        <h2 id="forever" class="love">♾️ To be continued... Maya & Malek ♾️</h2>
+      </div>
+      <script>setTimeout(() => { document.getElementById("forever").classList.add("show"); }, 3000);</script>
+    </div>
+  </template>
+
+  <template id="tmpl-2025-03-14.html">
+    <div id="app-content" class="transition-fade">
+      <img src="night.jpg" class="bg-img">
+      <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Retour</a>
+      <div class="hearts">❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️</div>
+      <div class="memory">
+        <h1>🌙 14 Mars 2025</h1>
+        <p class="story">
+          nharteha ena nahki maa barcha mazelt w kont manhebch nodkhel maak fi haja serieux wela newaliw mabdhena khater
+          kont khayef men rouhy le manarkahech w hata 9bal man3icho hedha w nhebk haka
+          mahbitekch tetwja meni fi haja haka mtaa nahki maa ghyrek
+          wena maaak ama lilteha enty seltni
+        </p>
+        <h2 class="question">"Malek... ena w yek chnoua bedhabet ?" 🤍</h2>
+        <p class="story">
+          ena wa9teha 9outlk mariem mouch wa9tou taw nahkiw fih belgdee
+          lila heki 9adet wahdi w 9oult y malek y bech temchi mrigel w t9oulha eli enty tehebha ama tamel chy heka
+          mouch ken klem wela nkml fi jw w kol mara nahki maa chkun
+          wa9teha fhemet eli ena nhebk w kahw n9oulhelk men ghodwa nahkiw w 9outlk hani mabdhena w manech nalbo
+          w Nhebk ❤️❤️❤️❤️❤️❤️
+        </p>
+        <h2 id="love" class="love">نحبك ❤️</h2>
+      </div>
+      <script>setTimeout(() => { document.getElementById("love").classList.add("show"); }, 4000);</script>
+    </div>
+  </template>
+
+  <script src="script.js"></script>
+  <script src="navigation.js"></script>
+  <script>
+    const SECRET = "190724"; // 🔑 Code
+    const lock = document.getElementById("lock");
+    const error = document.getElementById("error");
+
+    // SESSION STORAGE for "Ask code on quit"
+    if (sessionStorage.getItem("unlocked") === "yes") {
+      lock.style.display = "none";
+    }
+
+    function unlock() {
+      const code = document.getElementById("code").value;
+      if (code === SECRET) {
+        sessionStorage.setItem("unlocked", "yes");
+        lock.style.display = "none";
+        // Try playing music again on unlock interaction just in case
+        document.getElementById("bg-music").play().catch(() => { });
+      } else {
+        error.textContent = "❌ Code incorrect";
+      }
+    }
+  </script>
+
 </body>
+
 </html>

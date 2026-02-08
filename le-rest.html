@@ -1,78 +1,72 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-<meta charset="UTF-8">
-<title>Le Rest ❤️</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<head>
+  <meta charset="UTF-8">
+  <title>Le Rest ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 
 <body>
 
-<!-- background -->
-<img src="maya.jpg" class="bg-img">
+  <!-- DYNAMIC CONTENT AREA -->
+  <div id="app-content" class="transition-fade">
 
-<!-- ⚠️ نفس audio باش الموسيقى تكمل (ما تعاودش) -->
-<audio id="bg-music" loop>
-  <source src="love.mp3" type="audio/mpeg">
-</audio>
+    <!-- background -->
+    <img src="maya.jpg" class="bg-img">
 
-<script>
-const music = document.getElementById("bg-music");
-music.volume = 0.25;
+    <!-- back button -->
+    <a href="index.html" class="back-btn">
+      <i class="fa-solid fa-arrow-left"></i> Retour
+    </a>
 
-// يكمل الموسيقى فقط
-if(localStorage.getItem('musicStarted')){
-  music.play().catch(()=>{});
-}
-</script>
+    <!-- memory card -->
+    <div class="memory">
 
-<!-- back button -->
-<a href="index.html" class="back-btn">
-  <i class="fa-solid fa-arrow-left"></i> Retour
-</a>
+      <h1>✨ Ekher lhkeya ❤️</h1>
 
-<!-- memory card -->
-<div class="memory">
+      <p>
+        Filkher maya nheb n9oulk eli tadineh mouch sehel w tadina
+        bkol chy kol chy w mazelt chtordhna barcha hajet okhra w adytelk
+        hajet omri makont netsawer fama chkun yesta7malhom
+        mouch ala 7ata haja khter nhebk w me2men bhkeytena chtekml fi
+        west hedha kol ena yek mabdhena maya w omrena mankhaliw badhena
+        haja hedhy mahech klem mahech just haja tete7kee hedhy hkeya
+        lezmeha tekml lezmk arfaa alech 9admin wena zeda wena fi weset
+        hedha kol ena omri mankhalik
+        w namel fi kol chy ala khatek nestana fi reponse menek y rouhy w raani nach9ek</Br>
+        </Br>
 
-  <h1>✨ Ekher lhkeya  ❤️</h1>
+        Andi barcha namel fih site hedha kol lila saher nekhdem fih hedha just chnlkhes hkeyetna mabdhena
+        tebet fih wlh hhh wenty kol lila malek fech tbawel fech tamel wena n9oulk formatik or9ed or9ed hedha
+        inshalah tkoun ejbetek w farhtek y azyen tofla w abed arftou fi hyety
+      </p>
 
-  <p>
-    Filkher maya nheb n9oulk eli tadineh mouch sehel w tadina
-     bkol chy kol chy w mazelt chtordhna barcha hajet okhra w adytelk 
-     hajet omri makont netsawer fama chkun yesta7malhom
-     mouch ala 7ata haja khter nhebk w me2men bhkeytena chtekml fi
-      west hedha kol ena yek mabdhena maya w omrena mankhaliw badhena
-       haja hedhy mahech klem mahech just haja tete7kee hedhy hkeya 
-       lezmeha tekml lezmk arfaa alech 9admin wena zeda wena fi weset
-        hedha kol ena omri mankhalik 
-    w namel fi kol chy ala khatek nestana fi reponse menek y rouhy w raani nach9ek</Br>
-  </Br>
+      <p>
+        Ma3adch fama dates bark...
+        el ba9i kolou → ❤️ Forever together
+      </p>
 
-    Andi barcha namel fih site hedha kol lila saher nekhdem fih  hedha just chnlkhes hkeyetna mabdhena
-     tebet fih wlh hhh wenty kol lila malek fech tbawel fech tamel wena n9oulk formatik or9ed or9ed hedha
-      inshalah tkoun ejbetek w farhtek y azyen tofla w abed arftou fi hyety
-  </p>
+      <h2 id="forever" class="love">
+        ♾️ To be continued... Maya & Malek ♾️
+      </h2>
 
-  <p>
-    Ma3adch fama dates bark...  
-    el ba9i kolou → ❤️ Forever together  
-  </p>
+    </div>
 
-  <h2 id="forever" class="love">
-    ♾️ To be continued... Maya & Malek ♾️
-  </h2>
+    <script>
+      setTimeout(() => {
+        document.getElementById("forever").classList.add("show");
+      }, 3000);
+    </script>
 
-</div>
-
-<script>
-setTimeout(()=>{
-  document.getElementById("forever").classList.add("show");
-},3000);
-</script>
+  </div>
+  <!-- End app-content -->
 
 </body>
+
 </html>
