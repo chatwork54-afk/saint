@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Pour Maya ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+body{
+  font-family:'Poppins',sans-serif;
+  margin:0;
+  text-align:center;
+  color:white;
+  overflow-x:hidden;
+  position:relative;
+  background:#000;
+}
+
+/* BACKGROUND IMAGE */
+.bg-img{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-2;
+  filter: brightness(0.6);
+}
+
+/* overlay blur */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.35);
+  backdrop-filter:blur(6px);
+  z-index:-1;
+}
+
+/* floating hearts */
+@keyframes floatHearts {
+  0% { transform: translateY(0) rotate(0deg); opacity:0.7;}
+  50% { transform: translateY(-20px) rotate(15deg); opacity:1;}
+  100% { transform: translateY(-40px) rotate(-15deg); opacity:0.7;}
+}
+.heart-floating{
+  position:fixed;
+  font-size:40px;
+  animation: floatHearts 4s ease-in-out infinite;
+  z-index:1;
+  opacity:0.4;
+}
+
+/* MEMORY CARD / CONTENT */
+.memory{
+  max-width:760px;
+  margin:120px auto 80px;
+  padding:50px 35px;
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(20px);
+  border-radius:30px;
+  box-shadow:0 18px 50px rgba(0,0,0,0.5);
+  animation:fadeUp 1s ease;
+}
+
+.memory h1{
+  font-size:38px;
+  color:#ffb6d9;
+  margin-bottom:25px;
+  text-shadow:0 0 10px rgba(255,182,217,0.7);
+}
+
+.memory p{
+  line-height:2;
+  font-size:18px;
+  opacity:0.95;
+}
+
+.memory img{
+  width:300px;
+  max-width:100%;
+  border-radius:25px;
+  box-shadow:0 12px 35px rgba(0,0,0,0.6);
+  transition:0.5s ease;
+  margin:30px 0;
+}
+
+.memory img:hover{
+  transform:scale(1.08);
+  box-shadow:0 15px 50px rgba(255,105,160,0.7);
+}
+
+.memory .signature{
+  margin-top:35px;
+  font-size:21px;
+  color:#ff9ecb;
+  font-weight:600;
+}
+
+.memory .signature .love-heart{
+  font-size:36px;
+  margin-top:12px;
+  animation:pulse 1.5s infinite;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(30px);}
+  to{opacity:1; transform:translateY(0);}
+}
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.25);}
+  100%{transform:scale(1);}
+}
+
+/* BACK BUTTON */
+.back-btn{
+  position:fixed;
+  top:20px;
+  left:20px;
+  color:#ff9ecb;
+  text-decoration:none;
+  font-size:18px;
+  background:rgba(0,0,0,0.3);
+  padding:8px 12px;
+  border-radius:12px;
+  z-index:2;
+}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  .memory{
+    margin:90px 15px 60px;
+    padding:30px 20px;
+  }
+  .memory h1{
+    font-size:28px;
+  }
+  .memory p{
+    font-size:16px;
+  }
+  .memory img{
+    width:220px;
+  }
+  .memory .signature .love-heart{
+    font-size:28px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND IMAGE -->
+<img src="bg.jpg" class="bg-img" alt="Background">
+
+<!-- floating hearts -->
+<div class="heart-floating" style="left:10%; top:30%;">❤️</div>
+<div class="heart-floating" style="left:80%; top:50%; animation-delay:1.5s;">💖</div>
+<div class="heart-floating" style="left:50%; top:10%; animation-delay:3s;">❤️</div>
+
+<!-- back button -->
+<a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Retour</a>
+
+<!-- MEMORY CARD -->
+<div class="memory">
+  <h1>Pour Maya ❤️</h1>
+
+  <p>
+    Mongela hedhy ya Maya mahech ken cadeau njibehlk, heya haja habyteha tab9alk.  
+    <br><br>
+    Men awel nhar arftek fih, wenty tbadel feya w t3alem feya chnwa ma3neha nehtam, w chnwa ma3neha nheb bel7a9.  
+    <br><br>
+    Kol de9i9a tadeha wenty lebsa al mongela, a3ref eli fama 9aleb ferhan ken bik, w yed3ilk belkhyr, w ychouf fik mosta9bel w hkeya yheb ykamaleha.  
+    <br><br>
+    Netmana Maya matna7yhch men yedek, w kol mara tchouf feha lwa9et tetfaker eli wa9ty, w 9albi w rouhy dima lik ❤️
+  </p>
+
+  <img src="montree.jpg" alt="Montre pour Maya">
+
+  <div class="signature">
+    Avec tout mon amour
+    <div class="love-heart">❤️</div>
+  </div>
+</div>
+
+<!-- AUDIO -->
+<audio id="bg-music" loop>
+  <source src="love.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const music = document.getElementById("bg-music");
+music.volume = 0.25;
+
+// joue automatiquement si déjà commencé
+if(localStorage.getItem('musicStarted')){
+  music.play().catch(()=>{});
+} else {
+  music.play().then(()=>{localStorage.setItem('musicStarted','true')}).catch(()=>{});
+}
+</script>
+
+</body>
+</html>
